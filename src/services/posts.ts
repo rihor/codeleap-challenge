@@ -34,7 +34,6 @@ class PostApi {
   }
 
   getPosts(): Promise<GetPostsOutput> {
-    console.log("should call");
     return this.api.get("").json();
   }
 

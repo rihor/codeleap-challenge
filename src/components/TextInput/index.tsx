@@ -19,7 +19,7 @@ const InputComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
   ref
 ) => {
   const messageError = props.name && validationsError?.[props.name]?.message;
-
+  console.log(messageError);
   return (
     <div className={styles.wrapper_base}>
       {label && <label>{label}</label>}
