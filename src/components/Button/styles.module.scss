@@ -1,0 +1,26 @@
+.button {
+  cursor: pointer;
+  background: $color-blue;
+  border-radius: 8px;
+  border: none;
+  height: 32px;
+  padding: 6px 30px;
+
+  font-family: $font-roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  transition: all 150ms;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    background-color: $color-gray;
+    color: #000;
+    cursor: not-allowed;
+  }
+}
