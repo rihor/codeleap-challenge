@@ -31,6 +31,7 @@ export default function MainPage() {
             <PostList
               posts={postsQuery.data.results}
               onEditPost={postsQuery.refetch}
+              onDeletePost={postsQuery.refetch}
             />
           ) : (
             <p>Loading...</p>

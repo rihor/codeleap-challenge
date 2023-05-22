@@ -20,7 +20,7 @@ type FormValues = z.infer<typeof validationSchema>;
 interface Props {
   postId: number | null;
   onSavePost: () => void;
-  onCancelEdit: () => void;
+  onCancel: () => void;
 }
 
 export function EditPostForm(props: Props) {
@@ -64,7 +64,7 @@ export function EditPostForm(props: Props) {
         <Button
           type="button"
           className={styles.cancel}
-          onClick={props.onCancelEdit}
+          onClick={props.onCancel}
         >
           Cancel
         </Button>

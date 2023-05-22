@@ -5,43 +5,63 @@ import { useAppSelector } from "~/redux/hooks";
 import { useRef, useState } from "react";
 import { Modal, ModalHandler } from "../Modal/Modal";
 import { EditPostForm } from "../EditPostForm";
+import { ConfirmDeleteForm } from "../ConfirmDeleteForm";
 
 interface Props {
   posts: Array<PostType>;
   onEditPost: () => void;
+  onDeletePost: () => void;
 }
 
 export function PostList(props: Props) {
   const username = useAppSelector((state) => state.user.name);
   const [selectedPostId, setSelectedPostId] = useState<null | number>(null);
-  const modalRef = useRef<ModalHandler>(null);
+  const editPostModalRef = useRef<ModalHandler>(null);
+  const deletePostModalRef = useRef<ModalHandler>(null);
 
   if (username === null) {
     return <></>;
   }
 
   function closeModal() {
-    modalRef.current?.close();
+    editPostModalRef.current?.close();
+    deletePostModalRef.current?.close();
   }
 
   function onEditedPost() {
     props.onEditPost();
-    modalRef.current?.close();
+    editPostModalRef.current?.close();
+  }
+
+  function onDeletePost() {
+    props.onDeletePost();
+    deletePostModalRef.current?.close();
+  }
+
+  function onDeletePostClicked(id: number) {
+    setSelectedPostId(id);
+    deletePostModalRef.current?.open();
   }
 
   function onEditPostClicked(id: number) {
     setSelectedPostId(id);
-
-    modalRef.current?.open();
+    editPostModalRef.current?.open();
   }
 
   return (
     <>
-      <Modal ref={modalRef}>
+      <Modal ref={editPostModalRef}>
         <EditPostForm
           postId={selectedPostId}
           onSavePost={onEditedPost}
-          onCancelEdit={closeModal}
+          onCancel={closeModal}
+        />
+      </Modal>
+      <Modal ref={deletePostModalRef}>
+        <ConfirmDeleteForm
+          postId={selectedPostId}
+          onConfirmDelete={onDeletePost}
+          onCancel={closeModal}
         />
       </Modal>
       <ul className={styles.list}>
@@ -52,6 +72,7 @@ export function PostList(props: Props) {
               post={post}
               username={username}
               onEditClick={onEditPostClicked}
+              onDeleteClick={onDeletePostClicked}
             />
           ))}
       </ul>

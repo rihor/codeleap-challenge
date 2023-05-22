@@ -10,10 +10,13 @@ interface Props {
   post: Post;
   username: string;
   onEditClick: (id: number) => void;
+  onDeleteClick: (id: number) => void;
 }
 
 export function Post(props: Props) {
-  function onDeleteClick() {}
+  function onDeleteClick() {
+    props.onDeleteClick(props.post.id);
+  }
 
   function onEditClick() {
     props.onEditClick(props.post.id);

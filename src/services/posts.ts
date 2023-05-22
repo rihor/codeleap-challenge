@@ -49,8 +49,13 @@ class PostApi {
     return await this.api.patch(`${id}/`, { json: input }).json();
   }
 
-  async deletePost(id: number): Promise<void> {
-    return await this.api.delete(`${id}`).json();
+  async deletePost(id: number | null): Promise<void> {
+    console.log("should delete ", id);
+    if (id === null) {
+      return;
+    }
+
+    return await this.api.delete(`${id}/`).json();
   }
 }
 

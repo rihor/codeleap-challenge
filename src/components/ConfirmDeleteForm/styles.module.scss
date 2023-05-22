@@ -1,0 +1,38 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  h2 {
+    font-family: $font-roboto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color: #000000;
+  }
+}
+
+.btn_group {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: 16px;
+}
+
+.cancel {
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  color: #000000;
+
+  &:hover {
+    background-color: rgb($color-gray-light, 0.5);
+  }
+}
+
+.delete {
+  background: #FF5151;
+  border-radius: 8px;
+}
