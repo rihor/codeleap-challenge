@@ -1,14 +1,14 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 import { TextInput } from "../TextInput";
 import { Button } from "../Button";
 import { TextAreaInput } from "../TextAreaInput";
 import styles from "./styles.module.scss";
-import { SavePostInput, postApi } from "~/services/posts";
+import { EditPostInput, postApi } from "~/services/posts";
 import { useAppSelector } from "~/redux/hooks";
-import { z } from "zod";
 
 export const validationSchema = z.object({
   title: z.string().min(2).max(150).nonempty(),
@@ -18,17 +18,18 @@ export const validationSchema = z.object({
 type FormValues = z.infer<typeof validationSchema>;
 
 interface Props {
+  postId: number | null;
   onSavePost: () => void;
+  onCancelEdit: () => void;
 }
 
-export function PostForm(props: Props) {
+export function EditPostForm(props: Props) {
   const username = useAppSelector((state) => state.user.name);
   const form = useForm<FormValues>({ resolver: zodResolver(validationSchema) });
   const mutation = useMutation({
-    mutationFn: (input: SavePostInput) => postApi.savePost(input),
+    mutationFn: (input: EditPostInput) => postApi.editPost(props.postId, input),
     onSuccess: () => {
       props.onSavePost();
-      mutation.reset();
     },
   });
 
@@ -38,7 +39,6 @@ export function PostForm(props: Props) {
     }
 
     mutation.mutate({
-      username,
       title: values.title,
       content: values.content,
     });
@@ -46,7 +46,7 @@ export function PostForm(props: Props) {
 
   return (
     <form className={styles.form} onSubmit={form.handleSubmit(onSubmitForm)}>
-      <h2>What&#x60;s on your mind?</h2>
+      <h2>Edit item</h2>
       <TextInput
         label="Title"
         placeholder="Hello world"
@@ -60,9 +60,19 @@ export function PostForm(props: Props) {
         validationsError={form.formState.errors}
       />
 
-      <Button type="submit" className={styles.custom_btn}>
-        Create
-      </Button>
+      <div className={styles.btn_group}>
+        <Button
+          type="button"
+          className={styles.cancel}
+          onClick={props.onCancelEdit}
+        >
+          Cancel
+        </Button>
+
+        <Button type="submit" className={styles.save}>
+          Save
+        </Button>
+      </div>
     </form>
   );
 }

@@ -9,12 +9,15 @@ import styles from "./styles.module.scss";
 interface Props {
   post: Post;
   username: string;
+  onEditClick: (id: number) => void;
 }
 
 export function Post(props: Props) {
   function onDeleteClick() {}
 
-  function onEditClick() {}
+  function onEditClick() {
+    props.onEditClick(props.post.id);
+  }
 
   return (
     <article className={styles.post}>

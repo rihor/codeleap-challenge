@@ -28,7 +28,10 @@ export default function MainPage() {
         <div className={styles.content}>
           <PostForm onSavePost={postsQuery.refetch} />
           {postsQuery.data ? (
-            <PostList posts={postsQuery.data.results} />
+            <PostList
+              posts={postsQuery.data.results}
+              onEditPost={postsQuery.refetch}
+            />
           ) : (
             <p>Loading...</p>
           )}

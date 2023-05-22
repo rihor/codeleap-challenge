@@ -6,7 +6,9 @@ import { Roboto } from "next/font/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { persistor, store } from "~/redux/store";
-const roboto = Roboto({
+
+// exporting font because it needs to be passed to modals
+export const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-roboto",

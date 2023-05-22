@@ -22,7 +22,7 @@ export interface SavePostInput {
   content: string;
 }
 
-export type EditPostInput = Omit<SavePostInput, "username">;
+export type EditPostInput = Partial<Omit<SavePostInput, "username">>;
 
 class PostApi {
   private api: KyInstance;
@@ -41,7 +41,11 @@ class PostApi {
     return await this.api.post("", { json: input }).json();
   }
 
-  async editPost(id: number, input: EditPostInput) {
+  async editPost(id: number | null, input: EditPostInput) {
+    if (id === null) {
+      return;
+    }
+
     return await this.api.patch(`${id}/`, { json: input }).json();
   }
 
