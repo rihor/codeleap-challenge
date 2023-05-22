@@ -4,7 +4,10 @@
     "plugin:@tanstack/eslint-plugin-query/recommended"
   ],
   "plugins": [
-    "@tanstack/query"
+    "@tanstack/query",
+    "prettier"
   ],
-  "rules": {}
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }

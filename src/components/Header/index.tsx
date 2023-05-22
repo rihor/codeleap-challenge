@@ -1,7 +1,5 @@
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 
 export function Header() {
-  return (
-    <div className={styles.header}>CodeLeap Network</div>
-  )
+  return <div className={styles.header}>CodeLeap Network</div>;
 }

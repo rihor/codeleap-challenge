@@ -1,24 +1,20 @@
-import { Post } from "~/services/posts"
-import { Button } from "../Button"
-import { DeleteIcon } from "../SVGs/Delete"
-import { EditIcon } from "../SVGs/Edit"
-import { timeFromNow } from "~/helpers/time"
+import { Post } from "~/services/posts";
+import { Button } from "../Button";
+import { DeleteIcon } from "../SVGs/Delete";
+import { EditIcon } from "../SVGs/Edit";
+import { timeFromNow } from "~/helpers/time";
 
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 
 interface Props {
-  post: Post
-  username: string
+  post: Post;
+  username: string;
 }
 
 export function Post(props: Props) {
-  function onDeleteClick() {
+  function onDeleteClick() {}
 
-  }
-
-  function onEditClick() {
-
-  }
+  function onEditClick() {}
 
   return (
     <article className={styles.post}>
@@ -38,15 +34,11 @@ export function Post(props: Props) {
       </header>
 
       <div className={styles.author}>
-        <span>
-          @{props.post.username}
-        </span>
-        <span>
-          {timeFromNow(props.post.created_datetime)}
-        </span>
+        <span>@{props.post.username}</span>
+        <span>{timeFromNow(props.post.created_datetime)}</span>
       </div>
 
       <p className={styles.content}>{props.post.content}</p>
     </article>
-  )
+  );
 }

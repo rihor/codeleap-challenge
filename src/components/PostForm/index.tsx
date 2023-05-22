@@ -1,12 +1,12 @@
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 
-import { TextInput } from "../TextInput"
-import { Button } from "../Button"
-import styles from "./styles.module.scss"
-import { TextAreaInput } from "../TextAreaInput"
+import { TextInput } from "../TextInput";
+import { Button } from "../Button";
+import styles from "./styles.module.scss";
+import { TextAreaInput } from "../TextAreaInput";
 
 export function PostForm() {
-  const form = useForm()
+  const form = useForm();
 
   return (
     <form className={styles.form}>
@@ -24,5 +24,5 @@ export function PostForm() {
 
       <Button className={styles.custom_btn}>Create</Button>
     </form>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 // https://react-svgr.com/playground
-import * as React from "react"
-import { SVGProps } from "react"
+import * as React from "react";
+import { SVGProps } from "react";
 
 export const EditIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -19,4 +19,4 @@ export const EditIcon = (props: SVGProps<SVGSVGElement>) => (
       d="M6.5 26.25h18.203c1.434 0 2.6-1.121 2.6-2.5V12.915l-2.6 2.5v8.335H10.607c-.034 0-.07.012-.103.012-.043 0-.086-.01-.13-.012H6.5V6.25h8.902l2.6-2.5H6.501c-1.434 0-2.6 1.121-2.6 2.5v17.5c0 1.379 1.166 2.5 2.6 2.5Z"
     />
   </svg>
-)
+);
