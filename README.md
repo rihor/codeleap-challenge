@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CodeLeap Frontend Challenge
+
+[link to the opportunity](https://codeleap.notion.site/Job-openings-be9610b2d137433088a7aafdeaad08b4?p=56511cb9f5f24176aade28093bcf65da&pm=s)
 
 ## Getting Started
 
